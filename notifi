@@ -1,0 +1,31 @@
+curl --header "Authorization: key=AIzaSyAIL_ROhxuJ7z-XGW0l1Mxm37cM-t3MiOg" --header "Content-Type: application/json" https://android.googleapis.com/gcm/send -d "{\"registration_ids\":[\"cDns5OqJuPo:APA91bGb9qfRYp6F6zlxIWMLNs0-W4iqd-LndLiuMa8BA09j0W9pxPr1Ntdw8Z7W76mpTEuCcNWOHUhjMPKhgbxZM1NIN1_sG9s3cM0fCrZ0UMmB6bD6M5S4BbhHyY1Q0MalS8IIbTF3\"]}"
+
+http://www.slideshare.net/SurbhiMathur/web-workers-13528217   24 slide
+
+
+
+
+fQqkO35V2w0:APA91bGuxfIYXpFAkMJcJ1v3_KYj7Rt9GOIbA54bhF9MoQKGrV03fWhLLJY1F4Hxsj9vBrh30hAj-HEPtpgnk1wZQSkRVZi1Ckfta15gze5depM9diHltA8KGlP0cACpyeEUVkVHoAxV
+
+
+
+
+
+Send notiﬁcation 
+
+(server) var webPush = require('web-push'); 
+webPush.setGCMAPIKey(process.env.GCM_API_KEY); // ... 
+webPush.sendNotiﬁcation(endpoint, ttl);
+
+Receive /show notiﬁcation (Service Worker) 
+
+self.addEventListener('push', function(event) { event.waitUntil( self.registration.showNotiﬁcation('New Discounts', { lang: 'la', body: 'Alea iacta est', icon: 'caesar.jpg', vibrate: [500, 100, 500], }) ); });
+
+Background Sync (in progress) - Speciﬁcation - sync / periodycSync
+
+ navigator.serviceWorker.ready
+.then(function(registration) { registration.sync.register('outbox').then(function() { // registration succeeded } });
+ self.addEventListener('sync', function(event)
+ { 
+if (event.tag == 'outbox')
+ { event.waitUntil(sendEverythingInTheOutbox()); } });
